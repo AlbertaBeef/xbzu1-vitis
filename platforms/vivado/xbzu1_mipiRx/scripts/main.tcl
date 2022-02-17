@@ -1,5 +1,5 @@
 
-set proj_name xbzu1_sbc_mipi
+set proj_name xbzu1_mipiRx
 set proj_dir ./project
 #set proj_board [get_board_parts "*:kv260:*" -latest_file_version]
 set bd_tcl_dir ./scripts

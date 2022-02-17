@@ -1,0 +1,8 @@
+platforms/avnet_*
+platforms/linux.bif
+platforms/vivado/xbzu1_*/project
+platforms/vivado/xbzu1_*/*.jou
+platforms/vivado/xbzu1_*/*.log
+platforms/xsct
+
+
