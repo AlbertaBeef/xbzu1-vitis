@@ -8,15 +8,12 @@ PFM_DIR = $(PWD)/platforms
 PFM_VER = 2021_2
 
 # valid platforms / overlays
-PFM_LIST = xbzu1_sbc_base xbzu1_sbc_io xbzu1_sbc_mipi xbzu1_sbc_dualcam
-OVERLAY_LIST = smartcam benchmark
+PFM_LIST = xbzu1_base xbzu1_io xbzu1_mipiRx xbzu1_mipiRx_mipiTx
+OVERLAY_LIST = benchmark
 
 # override platform name based on overlay
-ifeq ($(OVERLAY),smartcam)
-  override PFM = xbzu1_sbc_mipi
-endif
 ifeq ($(OVERLAY),benchmark)
-  override PFM = xbzu1_sbc_base
+  override PFM = xbzu1_base
 endif
 
 PFM_XPFM = $(PFM_DIR)/avnet_$(PFM)_$(PFM_VER)/$(PFM).xpfm
