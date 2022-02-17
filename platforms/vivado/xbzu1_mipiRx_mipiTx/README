@@ -1,15 +1,13 @@
-(C) Copyright 2020 - 2021 Xilinx, Inc.
+(C) Copyright 2022 Avnet, Inc.
 SPDX-License-Identifier: Apache-2.0
 
-The kv260_ispMipiRx_vmixDP Vivado project is generated in this directory.
-The kv260_ispMipiRx_vmixDP design supports the following multimedia peripherals
+The XBoard-ZU1 Vivado project is generated in this directory. 
+The mipiRx_mipiTx design supports the following multimedia peripherals 
 and interfaces:
 
-1. MIPI CSI PL interface connected to the AR0144 IAS image sensor and  on-board
-   AP1302 ISP.
+1. MIPI CSI PL interface connected to the dual camera SYZYGY add on-board
 
-2. DisplayPort and HDMI Tx via the PS DP stream interface and on-board
-   DP splitter.
+2. MIPI DSI PL interface connected to the dual camera SYZYGY add on-board
 
 The Vivado block design (scripts/config_bd.tcl) defines the above
 interfaces and peripherals. It also defines the Platform Interfaces
@@ -61,24 +59,24 @@ block design and finally build a XSA.
 
 The generated XSA will be located at:
 
-> ./project/kv260_ispMipiRx_vmixDP.xsa
+> ./project/xbzu1_mipiRx_mipiTx.xsa
 
 
 Modify the Vivado design:
 *************************
 
-To open the Vivado project run the following command from the
+To open the Vivado project run the following command from the 
 Vivado tcl console:
 
-> open_project ./project/kv260_ispMipiRx_vmixDP.xpr
+> open_project ./project/xbzu1_mipiRx_mipiTx.xpr
 
-The user can now modify the block design and run Vivado implementation
+The user can now modify the block design and run Vivado implementation 
 and bitstream generation in the Vivado cockpit.
 
-To write out a new extensible platform XSA file, run the following
+To write out a new extensible platform XSA file, run the following 
 command from the Vivado tcl console:
 
-> write_hw_platform -force -include_bit -file kv260_ispMipiRx_vmixDP.xsa
+> write_hw_platform -force -include_bit -file xbzu1_mipiRx_mipiTx.xsa
 
 The new XSA file can now be used replacing the existing XSA file in the Vitis
 platform generation or as hardware handoff file inside the Petalinux project.

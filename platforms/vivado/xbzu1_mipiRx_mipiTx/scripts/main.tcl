@@ -1,16 +1,15 @@
-# (C) Copyright 2020 - 2021 Xilinx, Inc.
-# SPDX-License-Identifier: Apache-2.0
 
-
-set proj_name kv260_ispMipiRx_vmixDP
+set proj_name xbzu1_mipiRx_mipiTx
 set proj_dir ./project
+#set proj_board [get_board_parts "*:kv260:*" -latest_file_version]
 set bd_tcl_dir ./scripts
-set board vision_som
-set device k26
+#set board vision_som
+set board xboard_zu1
+#set device k26
 set rev None
 set output {xsa}
 set xdc_list {./xdc/pin.xdc}
-set ip_repo_path {./ip}
+#set ip_repo_path {./ip}
 set src_repo_path {./src}
 set jobs 8
 
@@ -23,17 +22,17 @@ for { set i 0 } { $i < $argc } { incr i } {
   }
 }
 
-set proj_board [get_board_parts "*:kv260:*" -latest_file_version]
-create_project -name $proj_name -force -dir $proj_dir -part [get_property PART_NAME [get_board_parts $proj_board]]
-set_property board_part $proj_board [current_project]
+#create_project -name $proj_name -force -dir $proj_dir -part [get_property PART_NAME [get_board_parts $proj_board]]
+#set_property board_part $proj_board [current_project]
+create_project -name $proj_name -force -dir $proj_dir -part xczu1cg-sbva484-1-e
 
 import_files -fileset constrs_1 $xdc_list
 
-set_property board_connections {som240_1_connector xilinx.com:som240:som240_1_connector:1.0}  [current_project]
+#set_property board_connections {som240_1_connector xilinx.com:som240:som240_1_connector:1.0}  [current_project]
 
 
-set_property ip_repo_paths $ip_repo_path [current_project]
-update_ip_catalog
+#set_property ip_repo_paths $ip_repo_path [current_project]
+#update_ip_catalog
 
 # Create block diagram design and set as current design
 set design_name $proj_name

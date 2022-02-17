@@ -2,7 +2,7 @@
 SPDX-License-Identifier: Apache-2.0
 
 The XBoard-ZU1 Vivado project is generated in this directory. 
-The nlp design supports the following multimedia peripherals 
+The base design supports the following multimedia peripherals 
 and interfaces:
 
 1. ?
@@ -32,17 +32,33 @@ Declaring Platform (PFM) Interfaces and Properties in Xilinx Vitis Unified
 Software Platform Documentation(UG1393)
 
 
+Set Board Preset:
+*****************
+
+To build platforms make sure to set the Vivado Board Preset using the
+following steps
+
+1. git clone https://github.com/Xilinx/XilinxBoardStore
+2. Add the following line to Vivado initialization script
+	set_param board.repoPaths {<path to the git repo>/boards/Xilinx}
+
+The initialization tcl script for Vivado can be found at:
+
+Linux: $HOME/.Xilinx/Vivado/Vivado_init.tcl
+Windows: %APPDATA%/Roaming/Xilinx/Vivado/Vivado_init.tcl
+
+
 Generate Extensible XSA :
 *************************
-An extensible XSA is required build a Vitis Platform which is in turn used to 
-integrate accelerators into the platform. 
+An extensible XSA is required build a Vitis Platform which is in turn used to
+integrate accelerators into the platform.
 
 To build the XSA, run the following make command
 
 > make xsa
 
-The Makefile uses scripts/main.tcl file to create a vivado project, populate the 
-block design and finally build a XSA. 
+The Makefile uses scripts/main.tcl file to create a vivado project, populate the
+block design and finally build a XSA.
 
 The generated XSA will be located at:
 

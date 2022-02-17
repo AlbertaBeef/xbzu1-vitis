@@ -1,11 +1,11 @@
-# (C) Copyright 2020 - 2021 Xilinx, Inc.
+# (C) Copyright 2022 Avnet, Inc.
 # SPDX-License-Identifier: Apache-2.0
 
 RM = rm -rf
 VIVADO = $(XILINX_VIVADO)/bin/vivado
 JOBS ?= 8
 
-VIV_DESIGN = kv260_ispMipiRx_vcu_DP
+VIV_DESIGN = xbzu1_mipiRx
 
 VIV_PRJ_DIR = project
 VIV_SCRIPTS_DIR = scripts
