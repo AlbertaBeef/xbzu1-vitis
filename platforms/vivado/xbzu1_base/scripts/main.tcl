@@ -2,6 +2,8 @@
 set proj_name xbzu1_base
 set proj_dir ./project
 #set proj_board [get_board_parts "*:kv260:*" -latest_file_version]
+#set proj_board [get_board_parts "*:xbzu1:*" -latest_file_version]
+set proj_board avnet:xbzu1:1.0
 set bd_tcl_dir ./scripts
 #set board vision_som
 set board xboard_zu1
@@ -20,6 +22,20 @@ for { set i 0 } { $i < $argc } { incr i } {
     incr i
     set jobs [lindex $argv $i]
   }
+}
+
+# set board repo path
+set bdf_path [file normalize [pwd]/../../bdf]
+if {[expr {![catch {file lstat $bdf_path finfo}]}]} {
+   set_param board.repoPaths $bdf_path
+   puts "\n\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
+   puts " Selected \n BDF path $bdf_path"
+   puts "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n\n"
+} else {
+   puts "\n\n*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
+   puts " Error specifying BDF path $bdf_path"
+   puts "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*\n\n"
+   return -code ok
 }
 
 #create_project -name $proj_name -force -dir $proj_dir -part [get_property PART_NAME [get_board_parts $proj_board]]

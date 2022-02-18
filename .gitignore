@@ -5,4 +5,12 @@ platforms/vivado/xbzu1_*/*.jou
 platforms/vivado/xbzu1_*/*.log
 platforms/xsct
 
+overlays/examples/*/binary_container_1
+overlays/examples/*/dpu.xsa
+overlays/examples/*/packaged_kernel_*
+overlays/examples/*/tmp_kernel_pack_*
+overlays/examples/*/*.jou
+overlays/examples/*/*.log
+
+
 
