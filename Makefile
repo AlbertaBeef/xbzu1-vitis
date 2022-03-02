@@ -9,9 +9,12 @@ PFM_VER = 2021_2
 
 # valid platforms / overlays
 PFM_LIST = xbzu1_base xbzu1_io xbzu1_mipiRx xbzu1_mipiRx_mipiTx
-OVERLAY_LIST = benchmark
+OVERLAY_LIST = defect-detect benchmark
 
 # override platform name based on overlay
+ifeq ($(OVERLAY),defect-detect)
+  override PFM = xbzu1_base
+endif
 ifeq ($(OVERLAY),benchmark)
   override PFM = xbzu1_base
 endif
