@@ -43,6 +43,7 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 set list_projs [get_projects -quiet]
 if { $list_projs eq "" } {
    create_project project_1 myproj -part xczu1cg-sbva484-1-e
+   set_property BOARD_PART avnet.com:zuboard_1cg:part0:1.0 [current_project]
 }
 
 

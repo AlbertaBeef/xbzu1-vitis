@@ -8,7 +8,7 @@ PFM_DIR = $(PWD)/platforms
 PFM_VER = 2021_2
 
 # valid platforms / overlays
-PFM_LIST = xbzu1_base xbzu1_io xbzu1_mipiRx xbzu1_mipiRx_mipiTx
+PFM_LIST = xbzu1_base
 OVERLAY_LIST = defect-detect benchmark
 
 # override platform name based on overlay

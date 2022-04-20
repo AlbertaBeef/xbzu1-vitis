@@ -2,8 +2,8 @@
 set proj_name xbzu1_base
 set proj_dir ./project
 #set proj_board [get_board_parts "*:kv260:*" -latest_file_version]
-#set proj_board [get_board_parts "*:xbzu1:*" -latest_file_version]
-set proj_board avnet:xbzu1:1.0
+#set proj_board [get_board_parts "*:zub1cg:*" -latest_file_version]
+set proj_board avnet:zub1cg:1.0
 set bd_tcl_dir ./scripts
 #set board vision_som
 set board xboard_zu1
