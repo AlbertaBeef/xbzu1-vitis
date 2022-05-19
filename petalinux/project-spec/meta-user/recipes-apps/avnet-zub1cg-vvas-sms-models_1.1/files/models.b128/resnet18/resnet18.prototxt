@@ -1,0 +1,20 @@
+model {
+   name : "resnet_18"
+   kernel {
+     name: "resnet_18"
+     mean: 104
+     mean: 117
+     mean: 123
+     scale: 1.0
+     scale: 1.0
+     scale: 1.0
+   }
+   model_type : CLASSIFICATION
+   classification_param {
+      top_k : 1
+      test_accuracy : false
+      preprocess_type : CAFFE
+   }
+   is_tf : false
+}
+

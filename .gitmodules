@@ -7,3 +7,7 @@
 [submodule "platforms/bdf"]
 	path = platforms/bdf
 	url = https://github.com/Avnet/bdf
+[submodule "petalinux/project-spec/meta-avnet"]
+	path = petalinux/project-spec/meta-avnet
+	url = https://github.com/Avnet/meta-avnet.git
+	branch = tc_dev_new_xbzu1	

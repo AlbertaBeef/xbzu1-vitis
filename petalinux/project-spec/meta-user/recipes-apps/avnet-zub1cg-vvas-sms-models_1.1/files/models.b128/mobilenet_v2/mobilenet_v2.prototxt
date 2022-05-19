@@ -1,0 +1,18 @@
+model {
+   name : "mobilenet_v2"
+   kernel {
+     name: "mobilenet_v2"
+     mean: 104.0
+     mean: 117.0
+     mean: 123.0
+     scale: 0.00392157
+     scale: 0.00392157
+     scale: 0.00392157
+   }
+   model_type : CLASSIFICATION
+   classification_param {
+      top_k : 1
+      test_accuracy : false
+      preprocess_type : CAFFE
+   }
+}

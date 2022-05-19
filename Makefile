@@ -8,14 +8,23 @@ PFM_DIR = $(PWD)/platforms
 PFM_VER = 2021_2
 
 # valid platforms / overlays
-PFM_LIST = xbzu1_base
-OVERLAY_LIST = defect-detect benchmark
+PFM_LIST = xbzu1_base xbzu1_empty
+OVERLAY_LIST = defect-detect benchmark dpu_b512 dpu_b128  smart_model_select
 
 # override platform name based on overlay
 ifeq ($(OVERLAY),defect-detect)
   override PFM = xbzu1_base
 endif
 ifeq ($(OVERLAY),benchmark)
+  override PFM = xbzu1_base
+endif
+ifeq ($(OVERLAY),dpu_b512)
+  override PFM = xbzu1_base
+endif
+ifeq ($(OVERLAY),dpu_b128)
+  override PFM = xbzu1_base
+endif
+ifeq ($(OVERLAY),smart_model_select)
   override PFM = xbzu1_base
 endif
 
