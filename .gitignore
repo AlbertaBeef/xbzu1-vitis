@@ -20,4 +20,10 @@ overlays/examples/*/*.xsa
 overlays/examples/*/*.xclbin
 overlays/examples/*/*.xclbin.package_summary
 
+petalinux/project-spec/meta-user/recipes-apps/avnet-*/files/*.bit
+petalinux/project-spec/meta-user/recipes-apps/avnet-*/files/*.xclbin
+
+petalinux/project-spec/meta-user/recipes-apps/avnet-*/files/models.*/*/*.xmodel
+petalinux/project-spec/meta-user/recipes-apps/avnet-*/files/models.*/*/meta.json
+petalinux/project-spec/meta-user/recipes-apps/avnet-*/files/models.*/*/md5sum.txt
 
