@@ -90,17 +90,17 @@ Create the Petalinux project:
 *****************************
 To create the petalinux project, first copy the following overlay files:
 
-> cp overlays/examples/dpu_b512/binary_container_1/sd_card/xbzu1_base_wrapper.bit project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b512_1.0/files/zub1cg-dpu-b512.bit
+> cp overlays/examples/dpu_b512/binary_container_1/sd_card/xbzu1_base_wrapper.bit petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b512_1.0/files/zub1cg-dpu-b512.bit
 
-> cp overlays/examples/dpu_b512/binary_container_1/sd_card/dpu.xclbin project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b512_1.0/files/zub1cg-dpu-b512.xclbin
+> cp overlays/examples/dpu_b512/binary_container_1/sd_card/dpu.xclbin petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b512_1.0/files/zub1cg-dpu-b512.xclbin
 
-> cp overlays/examples/dpu_b128/binary_container_1/sd_card/xbzu1_base_wrapper.bit project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b128_1.0/files/zub1cg-dpu-b128.bit
+> cp overlays/examples/dpu_b128/binary_container_1/sd_card/xbzu1_base_wrapper.bit petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b128_1.0/files/zub1cg-dpu-b128.bit
 
-> cp overlays/examples/dpu_b128/binary_container_1/sd_card/dpu.xclbin project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b128_1.0/files/zub1cg-dpu-b128.xclbin
+> cp overlays/examples/dpu_b128/binary_container_1/sd_card/dpu.xclbin petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b128_1.0/files/zub1cg-dpu-b128.xclbin
 
-> cp overlays/examples/smart_model_select/binary_container_1/sd_card/xbzu1_base_wrapper.bit project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms_1.1/files/zub1cg-vvas-sms.bit
+> cp overlays/examples/smart_model_select/binary_container_1/sd_card/xbzu1_base_wrapper.bit petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms_1.1/files/zub1cg-vvas-sms.bit
 
-> cp overlays/examples/smart_model_select/binary_container_1/sd_card/dpu.xclbin project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms_1.1/files/zub1cg-vvas-sms.xclbin
+> cp overlays/examples/smart_model_select/binary_container_1/sd_card/dpu.xclbin petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms_1.1/files/zub1cg-vvas-sms.xclbin
 
 
 Then, copy the compiled models:
