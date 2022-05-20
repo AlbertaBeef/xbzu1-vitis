@@ -115,7 +115,7 @@ mkdir -p modelzoo/model-list
 cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_densebox_wider_360_640_1.11G_2.0 modelzoo/model-list/.
 cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_densebox_wider_320_320_0.49G_2.0 modelzoo/model-list/.
 cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_inceptionv1_imagenet_224_224_3.16G_2.0 modelzoo/model-list/.
-cp -r /overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_mobilenetv2_imagenet_224_224_0.59G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_mobilenetv2_imagenet_224_224_0.59G_2.0 modelzoo/model-list/.
 cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_refinedet_coco_360_480_0.96_5.08G_2.0 modelzoo/model-list/.
 cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_resnet18_imagenet_224_224_3.65G_2.0 modelzoo/model-list/.
 cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_resnet50_imagenet_224_224_7.7G_2.0 modelzoo/model-list/.
