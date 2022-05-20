@@ -128,6 +128,9 @@ cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov2_voc_448_448_
 cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov2_voc_448_448_34G_2.0 ./model-list/.
 cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov3_cityscapes_256_512_0.9_5.46G_2.0 ./model-list/.
 cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov3_voc_416_416_65.42G_2.0 ./model-list/.
+
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_plate-detection_320_320_0.49G_2.0 ./model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_plate-recognition_96_288_1.75G_2.0 ./model-list/.
 ```
 
 As a second example, let's define all the models from the model-zoo.
