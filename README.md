@@ -68,6 +68,8 @@ petalinux/project-spec/meta-avnet : https://github.com/Avnet/avnet-meta/tree/90a
 # Documentation
 
 
+
+*************************************
 Create the Vitis Extensible Platform:
 *************************************
 To create the xbzu1_base Vitis platforms, run the following command:
@@ -76,6 +78,8 @@ To create the xbzu1_base Vitis platforms, run the following command:
 make platform PFM=xbzu1_base
 ```
 
+
+**************************
 Create the Vitis Overlays:
 **************************
 To create the Vitis overlays, run the following commands:
@@ -92,6 +96,68 @@ make overlay OVERLAY=dpu_b128
 make overlay OVERLAY=smart_model_select
 ```
 
+
+*******************
+Compile the models:
+*******************
+To compile the models for the B128 and B512 architectures, first copy the arch.json files:
+
+```
+cp overlays/examples/dpu_b512/binary_container_1/sd_card/arch.json arch-b512.json
+cp overlays/examples/dpu_b128/binary_container_1/sd_card/arch.json arch-b128.json
+```
+
+Next, create a model-list directory that contains the models we want to compile:
+
+As a first example, let's define the 16 models required by the smart model select example.
+```
+mkdir model-list
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_densebox_wider_360_640_1.11G_2.0 model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_densebox_wider_320_320_0.49G_2.0 model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_inceptionv1_imagenet_224_224_3.16G_2.0 model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_mobilenetv2_imagenet_224_224_0.59G_2.0 ./model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_refinedet_coco_360_480_0.96_5.08G_2.0 ./model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_resnet18_imagenet_224_224_3.65G_2.0 ./model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_resnet50_imagenet_224_224_7.7G_2.0 ./model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_ssdadas_bdd_360_480_0.95_6.3G_2.0 ./model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_ssdmobilenetv2_bdd_360_480_6.57G_2.0 ./model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_ssdpedestrian_coco_360_640_0.97_5.9G_2.0 ./model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_ssdtraffic_360_480_0.9_11.6G_2.0 ./model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_tiny-yolov3_416_416_5.46G_2.0 ./model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov2_voc_448_448_0.77_7.82G_2.0 ./model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov2_voc_448_448_34G_2.0 ./model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov3_cityscapes_256_512_0.9_5.46G_2.0 ./model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov3_voc_416_416_65.42G_2.0 ./model-list/.
+
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_plate-detection_320_320_0.49G_2.0 ./model-list/.
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_plate-recognition_96_288_1.75G_2.0 ./model-list/.
+```
+
+As a second example, let's define all the models from the model-zoo.
+```
+cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list model-list
+```
+
+Launch the Vitis-AI tools docker:
+```
+cp -r ../overlays/Vitis-AI/setup .
+source ../overlays/Vitis-AI/docker_run.sh xilinx/vitis-ai:2.0.0.1103
+```
+
+To compile models for the B128 architecure:
+```
+source ./compile_modelzoo_b128.sh
+```
+
+To compile models for the B512 architecure:
+```
+source ./compile_modelzoo_b512.sh
+```
+
+
+
+
+*****************************
 Create the Petalinux project:
 *****************************
 To create the petalinux project, first copy the following overlay files:
