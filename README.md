@@ -72,49 +72,63 @@ Create the Vitis Extensible Platform:
 *************************************
 To create the xbzu1_base Vitis platforms, run the following command:
 
-> make platform PFM=xbzu1_base
-
+'''
+make platform PFM=xbzu1_base
+'''
 
 Create the Vitis Overlays:
 **************************
 To create the Vitis overlays, run the following commands:
 
-> make overlay OVERLAY=dpu_b512
+'''
+make overlay OVERLAY=dpu_b512
+'''
 
-> make overlay OVERLAY=dpu_b128
+'''
+make overlay OVERLAY=dpu_b128
+'''
 
-> make overlay OVERLAY=smart_model_select
-
+'''
+make overlay OVERLAY=smart_model_select
+'''
 
 Create the Petalinux project:
 *****************************
 To create the petalinux project, first copy the following overlay files:
 
-> cp overlays/examples/dpu_b512/binary_container_1/sd_card/xbzu1_base_wrapper.bit petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b512_1.0/files/zub1cg-dpu-b512.bit
+'''
+cp overlays/examples/dpu_b512/binary_container_1/sd_card/xbzu1_base_wrapper.bit petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b512_1.0/files/zub1cg-dpu-b512.bit
+cp overlays/examples/dpu_b512/binary_container_1/sd_card/dpu.xclbin petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b512_1.0/files/zub1cg-dpu-b512.xclbin
+'''
 
-> cp overlays/examples/dpu_b512/binary_container_1/sd_card/dpu.xclbin petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b512_1.0/files/zub1cg-dpu-b512.xclbin
+'''
+cp overlays/examples/dpu_b128/binary_container_1/sd_card/xbzu1_base_wrapper.bit petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b128_1.0/files/zub1cg-dpu-b128.bit
+cp overlays/examples/dpu_b128/binary_container_1/sd_card/dpu.xclbin petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b128_1.0/files/zub1cg-dpu-b128.xclbin
+'''
 
-> cp overlays/examples/dpu_b128/binary_container_1/sd_card/xbzu1_base_wrapper.bit petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b128_1.0/files/zub1cg-dpu-b128.bit
-
-> cp overlays/examples/dpu_b128/binary_container_1/sd_card/dpu.xclbin petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-dpu-b128_1.0/files/zub1cg-dpu-b128.xclbin
-
-> cp overlays/examples/smart_model_select/binary_container_1/sd_card/xbzu1_base_wrapper.bit petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms_1.1/files/zub1cg-vvas-sms.bit
-
-> cp overlays/examples/smart_model_select/binary_container_1/sd_card/dpu.xclbin petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms_1.1/files/zub1cg-vvas-sms.xclbin
-
+'''
+cp overlays/examples/smart_model_select/binary_container_1/sd_card/xbzu1_base_wrapper.bit petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms_1.1/files/zub1cg-vvas-sms.bit
+cp overlays/examples/smart_model_select/binary_container_1/sd_card/dpu.xclbin petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms_1.1/files/zub1cg-vvas-sms.xclbin
+'''
 
 Then, copy the compiled models:
 
-> ... TBD ...
-
+'''
+... TBD ...
+'''
 
 Finally, configure and build the petalinux project
 
-> cd petalinux
-> petalinux-config --silentconfig --get-hw-description=../platforms/vivado/xbzu1_base/project/xbzu1_base.xsa
+'''
+cd petalinux
 
-> petalinux-build -c avnet-image-full
+mkdir .petalinux
+touch .petalinux/metadata
 
+petalinux-config --silentconfig --get-hw-description=../platforms/vivado/xbzu1_base/project/xbzu1_base.xsa
+
+petalinux-build -c avnet-image-full
+'''
 
 
 # License
