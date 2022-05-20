@@ -36,9 +36,6 @@ SRC_URI = " \
 	file://models.b128/plate_detect/plate_detect.xmodel \
 	file://models.b128/plate_num/plate_num.prototxt \
 	file://models.b128/plate_num/plate_num.xmodel \
-	file://models.b128/yolov2_voc/label.json \
-	file://models.b128/yolov2_voc/yolov2_voc.prototxt \
-	file://models.b128/yolov2_voc/yolov2_voc.xmodel \
 	file://models.b128/yolov2_voc_pruned_0_77/label.json \
 	file://models.b128/yolov2_voc_pruned_0_77/yolov2_voc_pruned_0_77.prototxt \
 	file://models.b128/yolov2_voc_pruned_0_77/yolov2_voc_pruned_0_77.xmodel \
@@ -60,13 +57,16 @@ SRC_URI_NOT = " \
 	file://models.b128/ssd_traffic_pruned_0_9/meta.json \
 	file://models.b128/plate_detect/meta.json \
 	file://models.b128/plate_num/meta.json \
-	file://models.b128/yolov2_voc/meta.json \
 	file://models.b128/yolov2_voc_pruned_0_77/meta.json \
 	file://models.b128/yolov3_voc/meta.json \
 	\
 	file://models.b128/mobilenet_v2/meta.json \
 	file://models.b128/mobilenet_v2/mobilenet_v2.prototxt \
 	file://models.b128/mobilenet_v2/mobilenet_v2.xmodel \
+	file://models.b128/yolov2_voc/label.json \
+	file://models.b128/yolov2_voc/meta.json \
+	file://models.b128/yolov2_voc/yolov2_voc.prototxt \
+	file://models.b128/yolov2_voc/yolov2_voc.xmodel \
 	file://models.b128/yolov3_adas_pruned_0_9/label.json \
 	file://models.b128/yolov3_adas_pruned_0_9/meta.json \
 	file://models.b128/yolov3_adas_pruned_0_9/yolov3_adas_pruned_0_9.prototxt \
@@ -124,8 +124,8 @@ do_install() {
 	install -d ${D}/opt/avnet/zub1cg-vvas-sms/models.b128/plate_num
 	install -m 0755 models.b128/plate_num/* ${D}/opt/avnet/zub1cg-vvas-sms/models.b128/plate_num
 
-	install -d ${D}/opt/avnet/zub1cg-vvas-sms/models.b128/yolov2_voc
-	install -m 0755 models.b128/yolov2_voc/* ${D}/opt/avnet/zub1cg-vvas-sms/models.b128/yolov2_voc
+	#install -d ${D}/opt/avnet/zub1cg-vvas-sms/models.b128/yolov2_voc
+	#install -m 0755 models.b128/yolov2_voc/* ${D}/opt/avnet/zub1cg-vvas-sms/models.b128/yolov2_voc
 
 	install -d ${D}/opt/avnet/zub1cg-vvas-sms/models.b128/yolov2_voc_pruned_0_77
 	install -m 0755 models.b128/yolov2_voc_pruned_0_77/* ${D}/opt/avnet/zub1cg-vvas-sms/models.b128/yolov2_voc_pruned_0_77
@@ -197,10 +197,10 @@ FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/models.b128/plate_detect/plate_detect
 FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/models.b128/plate_num/plate_num.prototxt"
 FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/models.b128/plate_num/plate_num.xmodel"
 
-FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/models.b128/yolov2_voc/label.json"
+#FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/models.b128/yolov2_voc/label.json"
 #FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/models.b128/yolov2_voc/meta.json"
-FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/models.b128/yolov2_voc/yolov2_voc.prototxt"
-FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/models.b128/yolov2_voc/yolov2_voc.xmodel"
+#FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/models.b128/yolov2_voc/yolov2_voc.prototxt"
+#FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/models.b128/yolov2_voc/yolov2_voc.xmodel"
 
 FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/models.b128/yolov2_voc_pruned_0_77/label.json"
 #FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/models.b128/yolov2_voc_pruned_0_77/meta.json"
