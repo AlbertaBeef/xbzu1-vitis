@@ -103,44 +103,46 @@ Compile the models:
 To compile the models for the B128 and B512 architectures, first copy the arch.json files:
 
 ```
-cp overlays/examples/dpu_b512/binary_container_1/sd_card/arch.json arch-b512.json
-cp overlays/examples/dpu_b128/binary_container_1/sd_card/arch.json arch-b128.json
+cp overlays/examples/dpu_b512/binary_container_1/sd_card/arch.json modelzoo/arch-b512.json
+cp overlays/examples/dpu_b128/binary_container_1/sd_card/arch.json modelzoo/arch-b128.json
 ```
 
 Next, create a model-list directory that contains the models we want to compile:
 
 As a first example, let's define the 16 models required by the smart model select example.
 ```
-mkdir model-list
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_densebox_wider_360_640_1.11G_2.0 model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_densebox_wider_320_320_0.49G_2.0 model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_inceptionv1_imagenet_224_224_3.16G_2.0 model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_mobilenetv2_imagenet_224_224_0.59G_2.0 ./model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_refinedet_coco_360_480_0.96_5.08G_2.0 ./model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_resnet18_imagenet_224_224_3.65G_2.0 ./model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_resnet50_imagenet_224_224_7.7G_2.0 ./model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_ssdadas_bdd_360_480_0.95_6.3G_2.0 ./model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_ssdmobilenetv2_bdd_360_480_6.57G_2.0 ./model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_ssdpedestrian_coco_360_640_0.97_5.9G_2.0 ./model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_ssdtraffic_360_480_0.9_11.6G_2.0 ./model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_tiny-yolov3_416_416_5.46G_2.0 ./model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov2_voc_448_448_0.77_7.82G_2.0 ./model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov2_voc_448_448_34G_2.0 ./model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov3_cityscapes_256_512_0.9_5.46G_2.0 ./model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov3_voc_416_416_65.42G_2.0 ./model-list/.
+mkdir -p modelzoo/model-list
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_densebox_wider_360_640_1.11G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_densebox_wider_320_320_0.49G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_inceptionv1_imagenet_224_224_3.16G_2.0 modelzoo/model-list/.
+cp -r /overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_mobilenetv2_imagenet_224_224_0.59G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_refinedet_coco_360_480_0.96_5.08G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_resnet18_imagenet_224_224_3.65G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_resnet50_imagenet_224_224_7.7G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_ssdadas_bdd_360_480_0.95_6.3G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_ssdmobilenetv2_bdd_360_480_6.57G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_ssdpedestrian_coco_360_640_0.97_5.9G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_ssdtraffic_360_480_0.9_11.6G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_tiny-yolov3_416_416_5.46G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov2_voc_448_448_0.77_7.82G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov2_voc_448_448_34G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov3_cityscapes_256_512_0.9_5.46G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/dk_yolov3_voc_416_416_65.42G_2.0 modelzoo/model-list/.
 
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_plate-detection_320_320_0.49G_2.0 ./model-list/.
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_plate-recognition_96_288_1.75G_2.0 ./model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_plate-detection_320_320_0.49G_2.0 modelzoo/model-list/.
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list/cf_plate-recognition_96_288_1.75G_2.0 modelzoo/model-list/.
 ```
 
 As a second example, let's define all the models from the model-zoo.
 ```
-cp -r ../overlays/Vitis-AI/models/AI-Model-Zoo/model-list model-list
+cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list modelzoo/model-list
 ```
 
 Launch the Vitis-AI tools docker:
 ```
-cp -r ../overlays/Vitis-AI/setup .
+cp -r overlays/Vitis-AI/setup modelzoo/.
+
+cd modelzoo
 source ../overlays/Vitis-AI/docker_run.sh xilinx/vitis-ai:2.0.0.1103
 ```
 
@@ -180,21 +182,21 @@ cp overlays/examples/smart_model_select/binary_container_1/sd_card/dpu.xclbin pe
 Then, copy the compiled models:
 
 ```
-cp ../modelzoo/models.b128/densebox_320_320/densebox_320_320.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/densebox_320_320/densebox_320_320.xmodel
-cp ../modelzoo/models.b128/densebox_640_360/densebox_640_360.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/densebox_640_360/densebox_640_360.xmodel
-cp ../modelzoo/models.b128/inception_v1/inception_v1.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/inception_v1/inception_v1.xmodel
-cp ../modelzoo/models.b128/plate_detect/plate_detect.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/plate_detect/plate_detect.xmodel
-cp ../modelzoo/models.b128/plate_num/plate_num.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/plate_num/plate_num.xmodel
-cp ../modelzoo/models.b128/refinedet_pruned_0_96/refinedet_pruned_0_96.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/refinedet_pruned_0_96/refinedet_pruned_0_96.xmodel
-cp ../modelzoo/models.b128/resnet18/resnet18.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/resnet18/resnet18.xmodel
-cp ../modelzoo/models.b128/resnet50/resnet50.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/resnet50/resnet50.xmodel
-cp ../modelzoo/models.b128/ssd_adas_pruned_0_95/ssd_adas_pruned_0_95.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/ssd_adas_pruned_0_95/ssd_adas_pruned_0_95.xmodel
-cp ../modelzoo/models.b128/ssd_mobilenet_v2/ssd_mobilenet_v2.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/ssd_mobilenet_v2/ssd_mobilenet_v2.xmodel
-cp ../modelzoo/models.b128/ssd_pedestrian_pruned_0_97/ssd_pedestrian_pruned_0_97.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/ssd_pedestrian_pruned_0_97/ssd_pedestrian_pruned_0_97.xmodel
-cp ../modelzoo/models.b128/ssd_traffic_pruned_0_9/ssd_traffic_pruned_0_9.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/ssd_traffic_pruned_0_9/ssd_traffic_pruned_0_9.xmodel
-cp ../modelzoo/models.b128/tiny_yolov3_vmss/tiny_yolov3_vmss.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/tiny_yolov3_vmss/tiny_yolov3_vmss.xmodel
-cp ../modelzoo/models.b128/yolov2_voc_pruned_0_77/yolov2_voc_pruned_0_77.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/yolov2_voc_pruned_0_77/yolov2_voc_pruned_0_77.xmodel
-cp ../modelzoo/models.b128/yolov3_voc/yolov3_voc.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/yolov3_voc/yolov3_voc.xmodel
+cp modelzoo/models.b128/densebox_320_320/densebox_320_320.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/densebox_320_320/densebox_320_320.xmodel
+cp modelzoo/models.b128/densebox_640_360/densebox_640_360.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/densebox_640_360/densebox_640_360.xmodel
+cp modelzoo/models.b128/inception_v1/inception_v1.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/inception_v1/inception_v1.xmodel
+cp modelzoo/models.b128/plate_detect/plate_detect.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/plate_detect/plate_detect.xmodel
+cp modelzoo/models.b128/plate_num/plate_num.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/plate_num/plate_num.xmodel
+cp modelzoo/models.b128/refinedet_pruned_0_96/refinedet_pruned_0_96.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/refinedet_pruned_0_96/refinedet_pruned_0_96.xmodel
+cp modelzoo/models.b128/resnet18/resnet18.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/resnet18/resnet18.xmodel
+cp modelzoo/models.b128/resnet50/resnet50.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/resnet50/resnet50.xmodel
+cp modelzoo/models.b128/ssd_adas_pruned_0_95/ssd_adas_pruned_0_95.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/ssd_adas_pruned_0_95/ssd_adas_pruned_0_95.xmodel
+cp modelzoo/models.b128/ssd_mobilenet_v2/ssd_mobilenet_v2.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/ssd_mobilenet_v2/ssd_mobilenet_v2.xmodel
+cp modelzoo/models.b128/ssd_pedestrian_pruned_0_97/ssd_pedestrian_pruned_0_97.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/ssd_pedestrian_pruned_0_97/ssd_pedestrian_pruned_0_97.xmodel
+cp modelzoo/models.b128/ssd_traffic_pruned_0_9/ssd_traffic_pruned_0_9.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/ssd_traffic_pruned_0_9/ssd_traffic_pruned_0_9.xmodel
+cp modelzoo/models.b128/tiny_yolov3_vmss/tiny_yolov3_vmss.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/tiny_yolov3_vmss/tiny_yolov3_vmss.xmodel
+cp modelzoo/models.b128/yolov2_voc_pruned_0_77/yolov2_voc_pruned_0_77.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/yolov2_voc_pruned_0_77/yolov2_voc_pruned_0_77.xmodel
+cp modelzoo/models.b128/yolov3_voc/yolov3_voc.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/yolov3_voc/yolov3_voc.xmodel
 ```
 
 Finally, configure and build the petalinux project
