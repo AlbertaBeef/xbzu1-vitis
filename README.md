@@ -180,7 +180,21 @@ cp overlays/examples/smart_model_select/binary_container_1/sd_card/dpu.xclbin pe
 Then, copy the compiled models:
 
 ```
-... TBD ...
+cp ../modelzoo/models.b128/densebox_320_320/densebox_320_320.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/densebox_320_320/densebox_320_320.xmodel
+cp ../modelzoo/models.b128/densebox_640_360/densebox_640_360.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/densebox_640_360/densebox_640_360.xmodel
+cp ../modelzoo/models.b128/inception_v1/inception_v1.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/inception_v1/inception_v1.xmodel
+cp ../modelzoo/models.b128/plate_detect/plate_detect.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/plate_detect/plate_detect.xmodel
+cp ../modelzoo/models.b128/plate_num/plate_num.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/plate_num/plate_num.xmodel
+cp ../modelzoo/models.b128/refinedet_pruned_0_96/refinedet_pruned_0_96.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/refinedet_pruned_0_96/refinedet_pruned_0_96.xmodel
+cp ../modelzoo/models.b128/resnet18/resnet18.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/resnet18/resnet18.xmodel
+cp ../modelzoo/models.b128/resnet50/resnet50.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/resnet50/resnet50.xmodel
+cp ../modelzoo/models.b128/ssd_adas_pruned_0_95/ssd_adas_pruned_0_95.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/ssd_adas_pruned_0_95/ssd_adas_pruned_0_95.xmodel
+cp ../modelzoo/models.b128/ssd_mobilenet_v2/ssd_mobilenet_v2.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/ssd_mobilenet_v2/ssd_mobilenet_v2.xmodel
+cp ../modelzoo/models.b128/ssd_pedestrian_pruned_0_97/ssd_pedestrian_pruned_0_97.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/ssd_pedestrian_pruned_0_97/ssd_pedestrian_pruned_0_97.xmodel
+cp ../modelzoo/models.b128/ssd_traffic_pruned_0_9/ssd_traffic_pruned_0_9.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/ssd_traffic_pruned_0_9/ssd_traffic_pruned_0_9.xmodel
+cp ../modelzoo/models.b128/tiny_yolov3_vmss/tiny_yolov3_vmss.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/tiny_yolov3_vmss/tiny_yolov3_vmss.xmodel
+cp ../modelzoo/models.b128/yolov2_voc_pruned_0_77/yolov2_voc_pruned_0_77.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/yolov2_voc_pruned_0_77/yolov2_voc_pruned_0_77.xmodel
+cp ../modelzoo/models.b128/yolov3_voc/yolov3_voc.xmodel petalinux/project-spec/meta-user/recipes-apps/avnet-zub1cg-vvas-sms-models_1.1/files/models.b128/yolov3_voc/yolov3_voc.xmodel
 ```
 
 Finally, configure and build the petalinux project
