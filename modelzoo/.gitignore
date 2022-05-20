@@ -3,3 +3,9 @@ cache/
 model-list/
 models.b*/
 setup/
+checksum_list.txt 
+download_list.txt 
+debug_*.txt
+model_path.txt 
+name_list.txt 
+

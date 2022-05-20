@@ -542,5 +542,5 @@ function build_model() {
 mkdir -p ${TARGET}
 path='./model-list'
 build_model $path
-#rm download_list.txt name_list.txt checksum_list.txt model_path.txt
+rm download_list.txt name_list.txt checksum_list.txt model_path.txt debug_*.txt
 echo "All models are built succesfully."
