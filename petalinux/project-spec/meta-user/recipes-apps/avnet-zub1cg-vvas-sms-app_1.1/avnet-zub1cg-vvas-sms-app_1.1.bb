@@ -28,12 +28,6 @@ SRC_URI = " \
 	file://templates/mipi_fake_template.cfg \
 	file://templates/mipi_file_template.cfg \
 	file://templates/mipi_kms_template.cfg \
-	file://videos/CLASSIFICATION.mp4 \
-	file://videos/FACEDETECT.mp4 \
-	file://videos/REFINEDET.mp4 \
-	file://videos/SSD.mp4 \
-	file://videos/YOLOV2.mp4 \
-	file://videos/YOLOV3.mp4 \
 	"
 
 S = "${WORKDIR}"
@@ -65,13 +59,6 @@ do_install() {
 	install -m 0755 templates/usbcam_*_template.cfg  ${D}/opt/avnet/zub1cg-vvas-sms/app/templates
 	install -m 0755 templates/mipi_*_template.cfg    ${D}/opt/avnet/zub1cg-vvas-sms/app/templates
 
-	install -d ${D}/opt/avnet/zub1cg-vvas-sms/app/videos
-	install -m 0755 videos/CLASSIFICATION.mp4 ${D}/opt/avnet/zub1cg-vvas-sms/app/videos
-	install -m 0755 videos/FACEDETECT.mp4     ${D}/opt/avnet/zub1cg-vvas-sms/app/videos
-	install -m 0755 videos/REFINEDET.mp4      ${D}/opt/avnet/zub1cg-vvas-sms/app/videos
-	install -m 0755 videos/SSD.mp4            ${D}/opt/avnet/zub1cg-vvas-sms/app/videos
-	install -m 0755 videos/YOLOV2.mp4         ${D}/opt/avnet/zub1cg-vvas-sms/app/videos
-	install -m 0755 videos/YOLOV3.mp4         ${D}/opt/avnet/zub1cg-vvas-sms/app/videos
 }
 
 FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/app/smart_model_select"
@@ -97,10 +84,4 @@ FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/app/templates/mipi_fake_template.cfg"
 FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/app/templates/mipi_file_template.cfg"
 FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/app/templates/mipi_kms_template.cfg"
 
-FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/app/videos/CLASSIFICATION.mp4"
-FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/app/videos/FACEDETECT.mp4"
-FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/app/videos/REFINEDET.mp4"
-FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/app/videos/SSD.mp4"
-FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/app/videos/YOLOV2.mp4"
-FILES_${PN} += "/opt/avnet/zub1cg-vvas-sms/app/videos/YOLOV3.mp4"
 
