@@ -141,6 +141,7 @@ cp -r overlays/Vitis-AI/models/AI-Model-Zoo/model-list modelzoo/model-list
 Launch the Vitis-AI tools docker:
 ```
 cp -r overlays/Vitis-AI/setup modelzoo/.
+mkdir -p modelzoo/cache
 
 cd modelzoo
 source ../overlays/Vitis-AI/docker_run.sh xilinx/vitis-ai:2.0.0.1103
