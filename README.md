@@ -213,6 +213,12 @@ petalinux-config --silentconfig --get-hw-description=../platforms/vivado/xbzu1_b
 petalinux-build -c avnet-image-full
 ```
 
+Generate the BOOT.BIN
+
+```
+petalinux-package --boot --fsbl --pmufw --u-boot 
+```
+
 
 # License
 
