@@ -1,3 +1,24 @@
 /include/ "system-conf.dtsi"
+
+/*
+/dts-v1/;
+/plugin/;
+*/
 / {
+	fragment@0 {
+		target = <&fpga_full>;
+		overlay0: __overlay__ {
+			#address-cells = <2>;
+			#size-cells = <2>;
+			firmware-name = "project_1.bit.bin";
+		};
+	};
 };
+
+/* Remove all PL definitions, for use with FPGA-MANAGER */
+&amba_pl {
+  /delete-node/ interrupt-controller@a0060000;
+  /delete-node/ system_management_wiz@a0090000;
+  /delete-node/ zyxclmm_drm;
+};
+
