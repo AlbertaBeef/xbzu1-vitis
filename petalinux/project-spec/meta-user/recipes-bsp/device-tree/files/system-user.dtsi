@@ -11,14 +11,41 @@
 			#address-cells = <2>;
 			#size-cells = <2>;
 			firmware-name = "project_1.bit.bin";
+			resets = <&zynqmp_reset 116>, <&zynqmp_reset 117>, <&zynqmp_reset 118>, <&zynqmp_reset 119>;
+		};
+	};
+	fragment@1 {
+		target = <&amba>;
+		overlay1: __overlay__ {
+			zocl: zyxclmm_drm {
+				compatible = "xlnx,zocl";
+				status = "okay";
+				interrupt-parent = <&gic>;
+				interrupts = <0 89  4>, <0 90  4>, <0 91  4>, <0 92  4>,
+					     <0 93  4>, <0 94  4>, <0 95  4>, <0 96  4>;
+			};
 		};
 	};
 };
 
 /* Remove all PL definitions, for use with FPGA-MANAGER */
 &amba_pl {
-  /delete-node/ interrupt-controller@a0060000;
   /delete-node/ system_management_wiz@a0090000;
   /delete-node/ zyxclmm_drm;
 };
+
+
+/*
+&amba {
+	zocl: zyxclmm_drm {
+		compatible = "xlnx,zocl";
+		status = "okay";
+		interrupt-parent = <&gic>;
+		interrupts = <0 89  4>, <0 90  4>, <0 91  4>, <0 92  4>,
+			     <0 93  4>, <0 94  4>, <0 95  4>, <0 96  4>;
+	};
+};
+*/
+
+
 
