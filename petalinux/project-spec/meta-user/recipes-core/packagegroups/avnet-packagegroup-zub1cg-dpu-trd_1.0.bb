@@ -5,6 +5,7 @@ inherit packagegroup
 ZUB1CG_DPU_TRD_PACKAGES = " \
    avnet-zub1cg-dpu-b128 \
    avnet-zub1cg-dpu-b512 \
+   avnet-zub1cg-dpu-b512-boot \
    libdrm libdrm-tests libdrm-kms \
    xrt xrt-dev \
    zocl \
