@@ -8,8 +8,8 @@ PFM_DIR = $(PWD)/platforms
 PFM_VER = 2021_2
 
 # valid platforms / overlays
-PFM_LIST = xbzu1_base xbzu1_empty
-OVERLAY_LIST = defect-detect benchmark dpu_b512 dpu_b128  smart_model_select
+PFM_LIST = xbzu1_base xbzu1_dualcam xbzu1_empty
+OVERLAY_LIST = defect-detect benchmark dpu_b512 dpu_b128  smart_model_select dualcam_dpu_b128
 
 # override platform name based on overlay
 ifeq ($(OVERLAY),defect-detect)
@@ -26,6 +26,9 @@ ifeq ($(OVERLAY),dpu_b128)
 endif
 ifeq ($(OVERLAY),smart_model_select)
   override PFM = xbzu1_base
+endif
+ifeq ($(OVERLAY),dualcam_dpu_b128)
+  override PFM = xbzu1_dualcam
 endif
 
 PFM_XPFM = $(PFM_DIR)/avnet_$(PFM)_$(PFM_VER)/$(PFM).xpfm
