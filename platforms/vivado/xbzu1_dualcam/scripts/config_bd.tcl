@@ -207,6 +207,8 @@ proc create_hier_cell_GPIO { parentCell nameHier } {
   create_bd_pin -dir O -from 0 -to 0 frame_buffer_rd_resetn
   create_bd_pin -dir O -from 0 -to 0 frame_buffer_wr_resetn
   create_bd_pin -dir O -from 0 -to 0 icp3_i2c_id_select
+  create_bd_pin -dir O -from 0 -to 0 isp_rst
+  create_bd_pin -dir O -from 0 -to 0 isp_standby
   create_bd_pin -dir I -type rst s_axi_aresetn
   create_bd_pin -dir O -from 0 -to 0 sp3
   create_bd_pin -dir O -from 0 -to 0 trigger
@@ -273,11 +275,29 @@ proc create_hier_cell_GPIO { parentCell nameHier } {
    CONFIG.DOUT_WIDTH {1} \
  ] $xlslice_5
 
+  # Create instance: xlslice_6, and set properties
+  set xlslice_6 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice xlslice_6 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {6} \
+   CONFIG.DIN_TO {6} \
+   CONFIG.DIN_WIDTH {8} \
+   CONFIG.DOUT_WIDTH {1} \
+ ] $xlslice_6
+
+  # Create instance: xlslice_7, and set properties
+  set xlslice_7 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice xlslice_7 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {7} \
+   CONFIG.DIN_TO {7} \
+   CONFIG.DIN_WIDTH {8} \
+   CONFIG.DOUT_WIDTH {1} \
+ ] $xlslice_7
+
   # Create interface connections
   connect_bd_intf_net -intf_net S_AXI_1 [get_bd_intf_pins S_AXI] [get_bd_intf_pins axi_gpio_0/S_AXI]
 
   # Create port connections
-  connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins xlslice_0/Din] [get_bd_pins xlslice_1/Din] [get_bd_pins xlslice_2/Din] [get_bd_pins xlslice_3/Din] [get_bd_pins xlslice_4/Din] [get_bd_pins xlslice_5/Din]
+  connect_bd_net -net axi_gpio_0_gpio_io_o [get_bd_pins axi_gpio_0/gpio_io_o] [get_bd_pins xlslice_0/Din] [get_bd_pins xlslice_1/Din] [get_bd_pins xlslice_2/Din] [get_bd_pins xlslice_3/Din] [get_bd_pins xlslice_4/Din] [get_bd_pins xlslice_5/Din] [get_bd_pins xlslice_6/Din] [get_bd_pins xlslice_7/Din]
   connect_bd_net -net clk100_1 [get_bd_pins clk100] [get_bd_pins axi_gpio_0/s_axi_aclk]
   connect_bd_net -net s_axi_aresetn_1 [get_bd_pins s_axi_aresetn] [get_bd_pins axi_gpio_0/s_axi_aresetn]
   connect_bd_net -net xlslice_0_Dout [get_bd_pins trigger] [get_bd_pins xlslice_0/Dout]
@@ -286,6 +306,8 @@ proc create_hier_cell_GPIO { parentCell nameHier } {
   connect_bd_net -net xlslice_3_Dout [get_bd_pins frame_buffer_wr_resetn] [get_bd_pins xlslice_3/Dout]
   connect_bd_net -net xlslice_4_Dout [get_bd_pins frame_buffer_rd_resetn] [get_bd_pins vpss_csc_resetn] [get_bd_pins xlslice_4/Dout]
   connect_bd_net -net xlslice_5_Dout [get_bd_pins vpss_scaler_resetn] [get_bd_pins xlslice_5/Dout]
+  connect_bd_net -net xlslice_6_Dout [get_bd_pins isp_rst] [get_bd_pins xlslice_6/Dout]
+  connect_bd_net -net xlslice_7_Dout [get_bd_pins isp_standby] [get_bd_pins xlslice_7/Dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -555,6 +577,8 @@ proc create_root_design { parentCell } {
 
 
   # Create ports
+  set ap1302_isp_rst [ create_bd_port -dir O -from 0 -to 0 ap1302_isp_rst ]
+  set ap1302_isp_stby [ create_bd_port -dir O -from 0 -to 0 ap1302_isp_stby ]
   set clk48m [ create_bd_port -dir O -type clk clk48m ]
   set_property -dict [ list \
    CONFIG.FREQ_HZ {48000000} \
@@ -1415,7 +1439,7 @@ Port;FD4A0000;FD4AFFFF;0|FPD;DPDMA;FD4C0000;FD4CFFFF;0|FPD;DDR_XMPU5_CFG;FD05000
   # Create interface connections
   connect_bd_intf_net -intf_net CAPTURE_PIPELINE_m_axi_mm_video [get_bd_intf_pins CAPTURE_PIPELINE/m_axi_mm_video] [get_bd_intf_pins zynq_ultra_ps_e_0/S_AXI_HP0_FPD]
   connect_bd_intf_net -intf_net S_AXI_1 [get_bd_intf_pins GPIO/S_AXI] [get_bd_intf_pins axi_interconnect_0/M02_AXI]
-  connect_bd_intf_net -intf_net axi_iic_0_IIC [get_bd_intf_ports syzygy_i2c] [get_bd_intf_pins axi_iic_0/IIC]
+  connect_bd_intf_net -intf_net axi_iic_0_IIC [get_bd_intf_ports ap1302_isp_i2c] [get_bd_intf_pins axi_iic_0/IIC]
   connect_bd_intf_net -intf_net axi_interconnect_0_M00_AXI [get_bd_intf_pins axi_interconnect_0/M00_AXI] [get_bd_intf_pins system_management_wiz_0/S_AXI_LITE]
   connect_bd_intf_net -intf_net axi_interconnect_0_M01_AXI [get_bd_intf_pins axi_iic_0/S_AXI] [get_bd_intf_pins axi_interconnect_0/M01_AXI]
   connect_bd_intf_net -intf_net axi_interconnect_1_M00_AXI [get_bd_intf_pins CAPTURE_PIPELINE/csirxss_s_axi] [get_bd_intf_pins axi_interconnect_1/M00_AXI]
@@ -1423,7 +1447,7 @@ Port;FD4A0000;FD4AFFFF;0|FPD;DPDMA;FD4C0000;FD4CFFFF;0|FPD;DDR_XMPU5_CFG;FD05000
   connect_bd_intf_net -intf_net axi_interconnect_1_M02_AXI [get_bd_intf_pins CAPTURE_PIPELINE/frmbuf_ctrl] [get_bd_intf_pins axi_interconnect_1/M02_AXI]
   connect_bd_intf_net -intf_net axi_interconnect_1_M03_AXI [get_bd_intf_pins CAPTURE_PIPELINE/csc_ctrl] [get_bd_intf_pins axi_interconnect_1/M03_AXI]
   connect_bd_intf_net -intf_net mipi_phy_if_0_1 [get_bd_intf_ports mipi_phy_if_0] [get_bd_intf_pins CAPTURE_PIPELINE/mipi_phy_if_0]
-  connect_bd_intf_net -intf_net zynq_ultra_ps_e_0_IIC_0 [get_bd_intf_ports ap1302_isp_i2c] [get_bd_intf_pins zynq_ultra_ps_e_0/IIC_0]
+  connect_bd_intf_net -intf_net zynq_ultra_ps_e_0_IIC_0 [get_bd_intf_ports syzygy_i2c] [get_bd_intf_pins zynq_ultra_ps_e_0/IIC_0]
   connect_bd_intf_net -intf_net zynq_ultra_ps_e_0_M_AXI_HPM0_FPD [get_bd_intf_pins axi_interconnect_0/S00_AXI] [get_bd_intf_pins zynq_ultra_ps_e_0/M_AXI_HPM0_FPD]
   connect_bd_intf_net -intf_net zynq_ultra_ps_e_0_M_AXI_HPM1_FPD [get_bd_intf_pins axi_interconnect_1/S00_AXI] [get_bd_intf_pins zynq_ultra_ps_e_0/M_AXI_HPM1_FPD]
   connect_bd_intf_net -intf_net zynq_ultra_ps_e_0_SPI_1 [get_bd_intf_ports ap1302_isp_spi] [get_bd_intf_pins zynq_ultra_ps_e_0/SPI_1]
@@ -1433,6 +1457,8 @@ Port;FD4A0000;FD4AFFFF;0|FPD;DPDMA;FD4C0000;FD4CFFFF;0|FPD;DDR_XMPU5_CFG;FD05000
   connect_bd_net -net CAPTURE_PIPELINE_interrupt [get_bd_pins CAPTURE_PIPELINE/interrupt] [get_bd_pins xlconcat_1/In1]
   connect_bd_net -net GPIO_frame_buffer_wr_resetn [get_bd_pins CAPTURE_PIPELINE/frmbuf_resetn] [get_bd_pins GPIO/frame_buffer_wr_resetn]
   connect_bd_net -net GPIO_icp3_i2c_id_select [get_bd_ports icp3_i2c_id_select] [get_bd_pins GPIO/icp3_i2c_id_select]
+  connect_bd_net -net GPIO_isp_rst [get_bd_ports ap1302_isp_rst] [get_bd_pins GPIO/isp_rst]
+  connect_bd_net -net GPIO_isp_standby [get_bd_ports ap1302_isp_stby] [get_bd_pins GPIO/isp_standby]
   connect_bd_net -net GPIO_sp3 [get_bd_ports sp3] [get_bd_pins GPIO/sp3]
   connect_bd_net -net GPIO_trigger [get_bd_ports trigger] [get_bd_pins GPIO/trigger]
   connect_bd_net -net GPIO_vpss_csc_resetn [get_bd_pins CAPTURE_PIPELINE/vpss_csc_resetn] [get_bd_pins GPIO/vpss_csc_resetn]

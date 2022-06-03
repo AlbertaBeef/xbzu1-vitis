@@ -88,8 +88,10 @@
 
 				clocks = <&ap1302_osc>;
 
-				reset-gpios = <&gpio 39 1>; //<&gpio 39 GPIO_ACTIVE_LOW>;
-				standby-gpios = <&gpio 44 0>; //<&gpio 44 GPIO_ACTIVE_HIGH>;
+				//reset-gpios = <&gpio 39 1>; //<&gpio 39 GPIO_ACTIVE_LOW>;
+				//standby-gpios = <&gpio 44 0>; //<&gpio 44 GPIO_ACTIVE_HIGH>;
+				reset-gpios = <&GPIO_axi_gpio_0 6 0 1>;
+				standby-gpios = <&GPIO_axi_gpio_0 7 1 1>;
 
 				port@2 {
 					reg = <2>;
@@ -114,7 +116,6 @@
 					};
 				};
 			};
-			
 		};
 		
 		CAPTURE_PIPELINE_mipi_csi2_rx_subsyst_0: mipi_csi2_rx_subsystem@b0000000 {
