@@ -90,8 +90,8 @@
 
 				//reset-gpios = <&gpio 39 1>; //<&gpio 39 GPIO_ACTIVE_LOW>;
 				//standby-gpios = <&gpio 44 0>; //<&gpio 44 GPIO_ACTIVE_HIGH>;
-				reset-gpios = <&GPIO_axi_gpio_0 6 0 1>;
-				standby-gpios = <&GPIO_axi_gpio_0 7 1 1>;
+				reset-gpios = <&GPIO_axi_gpio_0 6 1 1>;
+				standby-gpios = <&GPIO_axi_gpio_0 7 0 1>;
 
 				port@2 {
 					reg = <2>;
@@ -162,26 +162,6 @@
 					};
 				};
 			};
-		};
-		CAPTURE_PIPELINE_v_frmbuf_wr_0: v_frmbuf_wr@b0020000 {
-			#dma-cells = <1>;
-			clock-names = "ap_clk";
-			clocks = <&misc_clk_0>;
-			compatible = "xlnx,v-frmbuf-wr-2.3", "xlnx,axi-frmbuf-wr-v2.2";
-			interrupt-names = "interrupt";
-			interrupt-parent = <&gic>;
-			interrupts = <0 105 4>;
-			reg = <0x0 0xb0020000 0x0 0x10000>;
-			xlnx,dma-addr-width = <32>;
-			xlnx,dma-align = <8>;
-			xlnx,max-height = <2160>;
-			xlnx,max-width = <3840>;
-			xlnx,pixels-per-clock = <1>;
-			xlnx,s-axi-ctrl-addr-width = <0x7>;
-			xlnx,s-axi-ctrl-data-width = <0x20>;
-			xlnx,vid-formats = "rgb888", "uyvy", "y8", "yuyv";
-			xlnx,video-width = <8>;
-			reset-gpios = <&GPIO_axi_gpio_0 3 0 1>;
 		};
 		CAPTURE_PIPELINE_v_proc_ss_csc_0: v_proc_ss@b0010000 {
 			clock-names = "aclk";
@@ -271,6 +251,26 @@
 					};
 				};
 			};
+		};
+		CAPTURE_PIPELINE_v_frmbuf_wr_0: v_frmbuf_wr@b0020000 {
+			#dma-cells = <1>;
+			clock-names = "ap_clk";
+			clocks = <&misc_clk_0>;
+			compatible = "xlnx,v-frmbuf-wr-2.3", "xlnx,axi-frmbuf-wr-v2.2";
+			interrupt-names = "interrupt";
+			interrupt-parent = <&gic>;
+			interrupts = <0 105 4>;
+			reg = <0x0 0xb0020000 0x0 0x10000>;
+			xlnx,dma-addr-width = <32>;
+			xlnx,dma-align = <8>;
+			xlnx,max-height = <2160>;
+			xlnx,max-width = <3840>;
+			xlnx,pixels-per-clock = <1>;
+			xlnx,s-axi-ctrl-addr-width = <0x7>;
+			xlnx,s-axi-ctrl-data-width = <0x20>;
+			xlnx,vid-formats = "rgb888", "uyvy", "y8", "yuyv";
+			xlnx,video-width = <8>;
+			reset-gpios = <&GPIO_axi_gpio_0 3 0 1>;
 		};
 		vcap_CAPTURE_PIPELINE_v_proc_ss_scaler_0 {
 			compatible = "xlnx,video";
