@@ -52,6 +52,25 @@
 			clock-frequency  = <48000000>;
 			clock-output-names = "ap1302osc";
 		};
+		ap1302_vdd: fixedregulator@0 {
+			compatible = "regulator-fixed";
+			regulator-name = "ap1302_vdd";
+			regulator-min-microvolt = <2800000>;
+			regulator-max-microvolt = <2800000>;
+			enable-active-high;
+		};
+		ap1302_vaa: fixedregulator@1 {
+			compatible = "regulator-fixed";
+			regulator-name = "ap1302_vaa";
+			regulator-min-microvolt = <1800000>;
+			regulator-max-microvolt = <1800000>;
+		};
+		ap1302_vddio: fixedregulator@2 {
+			compatible = "regulator-fixed";
+			regulator-name = "ap1302_vddio";
+			regulator-min-microvolt = <1200000>;
+			regulator-max-microvolt = <1200000>;
+		};
 
 		GPIO_axi_gpio_0: gpio@a0000000 {
 			#gpio-cells = <3>;
@@ -110,19 +129,26 @@
 
 					sensor@0 {
 						reg = <0>;
+						vdd-supply = <&ap1302_vdd>;
+						vaa-supply = <&ap1302_vaa>;
+						vddio-supply = <&ap1302_vddio>;						
 					};
 
 					sensor@1 {
 						reg = <1>;
+						vdd-supply = <&ap1302_vdd>;
+						vaa-supply = <&ap1302_vaa>;
+						vddio-supply = <&ap1302_vddio>;						
 					};
 				};
 			};
 		};
 		
 		CAPTURE_PIPELINE_mipi_csi2_rx_subsyst_0: mipi_csi2_rx_subsystem@b0000000 {
+			status = "okay";		
 			clock-names = "lite_aclk", "dphy_clk_200M", "video_aclk";
 			clocks = <&misc_clk_0>, <&misc_clk_0>, <&misc_clk_0>;
-			compatible = "xlnx,mipi-csi2-rx-subsystem-5.1", "xlnx,mipi-csi2-rx-subsystem-5.0";
+			compatible = "xlnx,mipi-csi2-rx-subsystem-5.0";
 			interrupt-names = "csirxss_csi_irq";
 			interrupt-parent = <&gic>;
 			interrupts = <0 104 4>;
